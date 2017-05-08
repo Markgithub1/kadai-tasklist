@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   end
   
   def create
-    @task = Task.new(message_params)
+    @task = Task.new(task_params)
     
     if @task.save
       flash[:success] = 'Taskが正常に追加されました'
