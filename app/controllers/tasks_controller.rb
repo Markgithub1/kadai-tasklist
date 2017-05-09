@@ -18,7 +18,7 @@ class TasksController < ApplicationController
       flash[:success] = 'Taskが正常に追加されました'
       redirect_to @task
     else
-      flach.now[:danger] = 'Taskの追加ができませんでした'
+      flash.now[:danger] = 'Taskの追加ができませんでした'
       render :new
     end
   end
@@ -47,9 +47,8 @@ class TasksController < ApplicationController
     redirect_to tasks_url
   end
 
-private
-
+  private
   def task_params
-  params.require(:task).permit(:content)
+    params.require(:task).permit(:content, :status)
   end
 end
