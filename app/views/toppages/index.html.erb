@@ -1,0 +1,22 @@
+<% if logged_in? %>
+ <%= form_for(@task) do |f| %>
+      <%= f.text_area :content, class: 'form-control', rows: 5 %>
+      <%= f.text_field :status, class: 'form-control', rows: 5 %>
+      <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+  <% end %>
+<p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <% @tasklist.each do |task| %>
+    <p>コンテンツ：<%= task.content %></p>
+    <p>ステータス:<%= task.status %></p>
+  <% end %>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>Welcome to the Tasklist</h1>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+<% end %>
+
+
+
