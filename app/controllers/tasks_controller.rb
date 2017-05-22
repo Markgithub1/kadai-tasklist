@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   end
   
   def edit
-    @task = current_user.tasks.find_by(params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
   
   def correct_user
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
   end
   
   def update
-    @task = current_user.task.find(params[:id])
+    @task = current_user.tasks.find(params[:id])
     
     if @task.update (task_params)
       flash[:success] = 'Taskは正常に更新されました'
